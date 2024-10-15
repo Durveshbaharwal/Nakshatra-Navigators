@@ -1,5 +1,135 @@
-<html>
-    <body>
-        <h1>mein mahatma gandu hun!</h1>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nakshatra Navigators Space Tourism</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Featured Destinations</a>
+                    <div class="dropdown-content">
+                        <a href="#moon">Moon</a>
+                        <a href="#mercury">Mercury</a>
+                        <a href="#venus">Venus</a>
+                        <a href="#mars">Mars</a>
+                        <a href="#jupiter">Jupiter</a>
+                        <a href="#saturn">Saturn</a>
+                        <a href="#uranus">Uranus</a>
+                        <a href="#neptune">Neptune</a>
+                    </div>
+                </li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="video-container">
+                <video autoplay muted loop>
+                    <source src="videos/headerloop.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="overlay-text">
+                    <h1>Welcome to Nakshatra Navigators Space Tourism</h1>
+                    <p>Experience the wonders of the universe like never before.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured-destinations">
+            <h2>Featured Destinations</h2>
+            <div class="destinations-grid">
+                <div class="destination" id="moon">
+                    <div class="destination-model">
+                        <canvas class="model-canvas" data-model="3dmodels/Moon.glb"></canvas>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Moon</h3>
+                        <h4>Lunar Dreams: Your Ticket to the Moon Awaits!</h4>
+                        <p>The Moon, Earth's celestial companion, awaits your visit: A desolate landscape bathed in the glow of Earth. Craters, mountains, and maria tell tales of cosmic history.</p>
+                        <a href="subweb/moon.html" class="btn">View Itinerary</a>
+                    </div>
+                </div>
+                <!-- Repeat similar structure for other destinations -->
+                <div class="destination" id="mercury">
+                    <div class="destination-model">
+                        <canvas class="model-canvas" data-model="3dmodels/Mercury.glb"></canvas>
+                    </div>
+                    <div class="destination-content">
+                        <h3>Mercury</h3>
+                        <h4>Mercury's Challenge: Conquer the Scorching World of Extremes!</h4>
+                        <p>Mercury, the sun-scorched world, invites the fearless: Days of searing heat and nights of bone-chilling cold. A landscape scarred by impact craters and volcanic plains.</p>
+                        <a href="subweb/mercury.html" class="btn">View Itinerary</a>
+                    </div>
+                </div>
+                <!-- Add Venus, Mars, Jupiter, Saturn, Uranus, Neptune with the same structure -->
+            </div>
+        </section>
+
+        <section id="about-us">
+            <h2>About Us</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>Khushi Patel</h3>
+                    <p>Team Leader</p>
+                    <p>@khushipat, India</p>
+                </div>
+                <div class="team-member">
+                    <h3>Aneri Raval</h3>
+                    <p>@aneri11, India</p>
+                </div>
+                <div class="team-member">
+                    <h3>Karan Ravindra Chauhan</h3>
+                    <p>@karanc15, India</p>
+                </div>
+                <div class="team-member">
+                    <h3>Patel Nisarg Mukeshbhai</h3>
+                    <p>@nisarg1209, India</p>
+                </div>
+                <div class="team-member">
+                    <h3>Tanuj Kaswa</h3>
+                    <p>@tanujkaswa, India</p>
+                </div>
+                <div class="team-member">
+                    <h3>Durvesh Baharwal</h3>
+                    <p>@durvesh15, India</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or inquiries, please fill out the form below.</p>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Nakshatra Navigators Space Tourism</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
