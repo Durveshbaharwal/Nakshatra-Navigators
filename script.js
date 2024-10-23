@@ -20,8 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Here you would typically send the form data to a server
-            // For this example, we'll just log it to the console
+            // Placeholder for sending form data to a server
             console.log('Form submitted');
             alert('Thank you for your message. We will get back to you soon!');
             this.reset();
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loader.load(
             modelFile,
             function(gltf) {
-                // Traverse scene to adjust materials or properties if needed
+                // Traverse scene to fix potential material issues
                 gltf.scene.traverse(child => {
                     if (child.isMesh) {
                         const material = child.material;
@@ -64,23 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             undefined,
             function (error) {
-                console.error('An error happened during model loading:', error);
+                console.error('An error occurred while loading the model:', error);
             }
         );
 
         camera.position.z = 5;
 
+        // Initialize OrbitControls with error handling
         let controls;
         try {
             controls = new THREE.OrbitControls(camera, renderer.domElement);
-        } catch (error) {
-            console.error('Error initializing OrbitControls:', error);
-        }
-
-        if (controls) {
             controls.enableDamping = true;
             controls.dampingFactor = 0.25;
             controls.enableZoom = false;
+        } catch (error) {
+            console.error('Error initializing OrbitControls:', error);
         }
 
         function animate() {
@@ -131,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Mars Destination clicked!');
         });
     });
+
     // Hamburger menu functionality
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navMenu = document.querySelector('nav ul');
@@ -152,7 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Toggle dropdown on mobile
-    featuredDestinationsDropdown.querySelector('.dropbtn').addEventListener('click', (e) => {
+    const dropBtn = featuredDestinationsDropdown.querySelector('.dropbtn');
+    dropBtn.addEventListener('click', (e) => {
         e.preventDefault();
         const dropdownContent = featuredDestinationsDropdown.querySelector('.dropdown-content');
         dropdownContent.classList.toggle('show');
@@ -168,11 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close dropdowns when clicking outside
     window.addEventListener('click', (e) => {
         if (!e.target.matches('.dropbtn') && !e.target.closest('.dropdown-content')) {
-            dropdowns.forEach(dropdown => {
-                if (dropdown.classList.contains('show')) {
-                    dropdown.classList.remove('show');
-                }
-            });
+            dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
         }
     });
 
@@ -194,5 +189,4 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.remove('show');
         });
     });
-
 });
