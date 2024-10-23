@@ -5,6 +5,15 @@
     box-sizing: border-box;
 }
 
+/* Hide scrollbar but allow scrolling */
+html {
+    scrollbar-width: none; /* For Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -402,8 +411,29 @@ footer {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
+
+
+@media screen and (max-width: 768px) {
+    /* ... (keep existing mobile styles) ... */
+
+    .dropdown-content {
+        position: static;
+        display: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding-left: 20px;
+    }
+
+    .dropdown-content.show {
+        display: block;
+    }
+
+    .dropdown-content a {
+        padding: 10px 0;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }
     nav ul {
         flex-direction: column;
         align-items: center;

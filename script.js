@@ -131,10 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Mars Destination clicked!');
         });
     });
-        // Hamburger menu functionality
+    // Hamburger menu functionality
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navMenu = document.querySelector('nav ul');
     const dropdowns = document.querySelectorAll('.dropdown-content');
+    const featuredDestinationsDropdown = document.querySelector('.dropdown');
 
     hamburgerMenu.addEventListener('click', () => {
         hamburgerMenu.classList.toggle('active');
@@ -142,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Close menu when a link is clicked
-    document.querySelectorAll('nav a').forEach(link => {
+    document.querySelectorAll('nav a:not(.dropbtn)').forEach(link => {
         link.addEventListener('click', () => {
             hamburgerMenu.classList.remove('active');
             navMenu.classList.remove('show');
@@ -151,25 +152,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Toggle dropdown on mobile
-    document.querySelectorAll('.dropdown').forEach(dropdown => {
-        const dropdownBtn = dropdown.querySelector('.dropbtn');
-        const dropdownContent = dropdown.querySelector('.dropdown-content');
-
-        dropdownBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            dropdownContent.classList.toggle('show');
+    featuredDestinationsDropdown.querySelector('.dropbtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        const dropdownContent = featuredDestinationsDropdown.querySelector('.dropdown-content');
+        dropdownContent.classList.toggle('show');
+        
+        // Close other dropdowns
+        dropdowns.forEach(dropdown => {
+            if (dropdown !== dropdownContent && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
         });
     });
 
     // Close dropdowns when clicking outside
     window.addEventListener('click', (e) => {
-        if (!e.target.matches('.dropbtn')) {
+        if (!e.target.matches('.dropbtn') && !e.target.closest('.dropdown-content')) {
             dropdowns.forEach(dropdown => {
                 if (dropdown.classList.contains('show')) {
                     dropdown.classList.remove('show');
                 }
             });
         }
+    });
+
+    // Prevent default behavior and smooth scroll for dropdown links
+    document.querySelectorAll('.dropdown-content a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+            // Close the dropdown and menu after clicking a link
+            dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
+            hamburgerMenu.classList.remove('active');
+            navMenu.classList.remove('show');
+        });
     });
 
 });
