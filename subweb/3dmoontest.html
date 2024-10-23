@@ -28,7 +28,7 @@
 
         // Load the GLTF model (update this URL to the correct path)
         const loader = new THREE.GLTFLoader();
-        loader.load('https://nakshatra-navigators.vercel.app/3dmodels/Moon/Moon.gltf', function (gltf) {
+        loader.load('https://nakshatra-navigators.vercel.app/3dmodels/Moon.glb', function (gltf) {
             scene.add(gltf.scene);
             animate(); // Start the animation loop after the model is loaded
         }, undefined, function (error) {
