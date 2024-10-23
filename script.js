@@ -15,20 +15,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Dynamic Navbar
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) { 
+            header.classList.add('scrolled');
+            header.style.padding = "0.5rem 0"; // Shrink navbar on scroll
+        } else {
+            header.classList.remove('scrolled');
+            header.style.padding = "1rem 0"; // Restore original padding
+        }
+    });
+
     // Form submission handling
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Here you would typically send the form data to a server
-            // For this example, we'll just log it to the console
             console.log('Form submitted');
             alert('Thank you for your message. We will get back to you soon!');
             this.reset();
         });
     }
 
-    // 3D model rendering using Three.js
+    // 3D model rendering
     const canvases = document.querySelectorAll('.model-canvas');
     canvases.forEach(canvas => {
         const modelFile = canvas.dataset.model;
@@ -48,12 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
         loader.load(
             modelFile,
             function(gltf) {
-                // Traverse scene to adjust materials or properties if needed
                 gltf.scene.traverse(child => {
                     if (child.isMesh) {
                         const material = child.material;
                         if (material && material.format) {
-                            delete material.format;  // Fix unsupported material property 'format'
+                            delete material.format; // Fix unsupported material property 'format'
                         }
                     }
                 });
@@ -90,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         animate();
 
-        // Handle window resize
         window.addEventListener('resize', () => {
             camera.aspect = canvas.clientWidth / canvas.clientHeight;
             camera.updateProjectionMatrix();
@@ -122,14 +130,4 @@ document.addEventListener('DOMContentLoaded', () => {
         destination.style.transition = 'opacity 0.5s, transform 0.5s';
         observer.observe(destination);
     });
-
-    // Mars destination interaction
-    const marsDestinations = document.querySelectorAll('.mars-content a');
-    marsDestinations.forEach(marsLink => {
-        marsLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Mars Destination clicked!');
-        });
-    });
-
 });
