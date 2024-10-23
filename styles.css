@@ -36,24 +36,29 @@ header {
     padding: 1rem 0;
 }
 
-nav ul {
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links ul {
     display: flex;
     justify-content: center;
     list-style: none;
 }
 
-nav ul li {
+.nav-links ul li {
     margin: 0 15px;
 }
 
-nav ul li a {
+.nav-links ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
-nav ul li a:hover {
+.nav-links ul li a:hover {
     color: #FFA500;
 }
 .hamburger {
