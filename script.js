@@ -47,38 +47,55 @@ document.addEventListener('DOMContentLoaded', () => {
         const loader = new THREE.GLTFLoader();
         loader.load(
             modelFile,
-            function  (gltf) {
+            function(gltf) {
+                // Traverse scene to adjust materials or properties if needed
+                gltf.scene.traverse(child => {
+                    if (child.isMesh) {
+                        const material = child.material;
+                        if (material && material.format) {
+                            delete material.format;  // Fix unsupported material property 'format'
+                        }
+                    }
+                });
+
                 scene.add(gltf.scene);
                 gltf.scene.scale.set(1.5, 1.5, 1.5);
                 gltf.scene.position.set(0, 0, 0);
             },
             undefined,
             function (error) {
-                console.error('An error happened', error);
+                console.error('An error happened during model loading:', error);
             }
         );
 
         camera.position.z = 5;
 
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.25;
-        controls.enableZoom = false;
+        let controls;
+        try {
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+        } catch (error) {
+            console.error('Error initializing OrbitControls:', error);
+        }
+
+        if (controls) {
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.25;
+            controls.enableZoom = false;
+        }
 
         function animate() {
             requestAnimationFrame(animate);
-            controls.update();
+            if (controls) controls.update();
             renderer.render(scene, camera);
         }
         animate();
 
         // Handle window resize
-        window.addEventListener('resize', onWindowResize, false);
-        function onWindowResize() {
+        window.addEventListener('resize', () => {
             camera.aspect = canvas.clientWidth / canvas.clientHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-        }
+        });
     });
 
     // Intersection Observer for fade-in effect on destinations
