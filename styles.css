@@ -4,6 +4,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Hide scrollbar but allow scrolling */
+html {
+    scrollbar-width: none; /* For Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+}
+
 
 body {
     font-family: Arial, sans-serif;
