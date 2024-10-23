@@ -268,8 +268,8 @@ nav ul li a:hover {
 /* Mars Destination styles */
 .mars {
     display: flex;
-    align-items: center; /* Vertically center content */
-    justify-content: space-between; /* Distribute space evenly */
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 40px;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -283,7 +283,7 @@ nav ul li a:hover {
 }
 
 .mars-content {
-    flex: 1; /* Takes up the available space */
+    flex: 1;
     padding: 10px;
 }
 
@@ -321,14 +321,14 @@ nav ul li a:hover {
 }
 
 .mars-iframe {
-    flex: 1; /* Takes up the available space alongside .mars-content */
-    max-width: 100%; /* Make sure the iframe doesn't exceed its container */
-    height: 400px; /* Let the height adjust proportionally */
+    flex: 1;
+    max-width: 100%;
+    height: 400px;
 }
 
 .mars-iframe iframe {
-    width: 100%; /* Full width of the .mars-iframe container */
-    height: 100%; /* Set to match the parent container */
+    width: 100%;
+    height: 100%;
     background-color: black;
 }
 
@@ -338,6 +338,7 @@ footer {
     text-align: center;
     padding: 1rem 0;
 }
+
 /* Hamburger menu styles */
 .hamburger-menu {
     display: none;
@@ -353,6 +354,7 @@ footer {
     transition: 0.4s;
 }
 
+/* Mobile styles */
 @media screen and (max-width: 768px) {
     .hamburger-menu {
         display: block;
@@ -372,6 +374,7 @@ footer {
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.9);
         padding-top: 60px;
+        align-items: center;
     }
 
     nav ul.show {
@@ -379,42 +382,8 @@ footer {
     }
 
     nav ul li {
-        margin: 15px 0;
+        margin: 0.5rem 0;
     }
-
-    .dropdown-content {
-        position: static;
-        display: none;
-        background-color: transparent;
-        box-shadow: none;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: none;
-    }
-
-    .dropdown-content.show {
-        display: block;
-    }
-}
-
-/* Animation for hamburger menu */
-.hamburger-menu.active .bar:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.hamburger-menu.active .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-menu.active .bar:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-}
-
-
-
-@media screen and (max-width: 768px) {
-    /* ... (keep existing mobile styles) ... */
 
     .dropdown-content {
         position: static;
@@ -427,20 +396,8 @@ footer {
         display: block;
     }
 
-    .dropdown-content a {
-        padding: 10px 0;
-    }
-
     .dropdown:hover .dropdown-content {
         display: none;
-    }
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 0.5rem 0;
     }
 
     .overlay-text h1 {
@@ -455,4 +412,17 @@ footer {
     .team-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Animation for hamburger menu */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
