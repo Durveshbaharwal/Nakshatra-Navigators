@@ -53,21 +53,7 @@
             <div class="destinations-grid">
                 <div class="destination" id="moon">
                     <div class="destination-model">
-                        <a-scene>
-                            <a-assets>
-                              <a-asset-item id="glbModel" src="./3dmodels/Moon.glb"></a-asset-item>
-                            </a-assets>
-                        
-                            <!-- Display the 3D Model -->
-                            <a-entity gltf-model="#glbModel" position="0 1 -5" scale="1 1 1"></a-entity>
-                        
-                            <!-- Add lighting -->
-                            <a-light type="directional" position="2 4 1"></a-light>
-                            <a-light type="ambient" color="#888"></a-light>
-                        
-                            <!-- Camera -->
-                            <a-camera position="0 1.6 0"></a-camera>
-                          </a-scene>
+                        <canvas class="model-canvas" data-model="3dmodels/Moon.glb"></canvas>
                     </div>
                     <div class="destination-content">
                         <h3>Moon</h3>
