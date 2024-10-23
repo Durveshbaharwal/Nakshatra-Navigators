@@ -11,16 +11,16 @@
 </head>
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
     <script>
-        // Set up the scene, camera, and renderer
+        // Basic Three.js scene setup
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Add some basic lighting
+        // Lighting setup
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
         const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
@@ -28,13 +28,14 @@
 
         // Load the GLTF model
         const loader = new THREE.GLTFLoader();
-        loader.load('../3dmodels/Moon/Moon.gltf', function (gltf) {
+        loader.load('..3dmodels/Moon/Moon.gltf', function (gltf) {
             scene.add(gltf.scene);
+            animate(); // Start the animation loop after the model is loaded
         }, undefined, function (error) {
-            console.error(error);
+            console.error('An error happened while loading the model:', error);
         });
 
-        // Position the camera
+        // Camera position
         camera.position.z = 5;
 
         // Animation loop
@@ -42,7 +43,6 @@
             requestAnimationFrame(animate);
             renderer.render(scene, camera);
         }
-        animate();
 
         // Handle window resizing
         window.addEventListener('resize', () => {
