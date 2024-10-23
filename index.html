@@ -71,12 +71,10 @@
                 </div>
                 <!-- Repeat similar structure for other destinations -->
                 <div class="destination" id="mercury">3dmoontest.html
-                    <div class="destination-model">
-                        <iframe title="Moon" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" 
-                            allow="autoplay; fullscreen; xr-spatial-tracking" 
-                            src="./subweb/3dmoontest.html">
-                        </iframe>
-                        <canvas class="model-canvas" data-model="./3dmodels/Mercury.glb"></canvas>
+                    <div class="mars">
+                        <div class="mars-iframe">
+                            <iframe src="3dmoon.html" frameborder="0" scrolling="no" width="400" height="400"></iframe>
+                        </div>
                     </div>
                     <div class="destination-content">
                         <h3>Mercury</h3>
@@ -141,7 +139,40 @@
     <footer>
         <p>&copy; 2023 Nakshatra Navigators Space Tourism</p>
     </footer>
+    <!-- JavaScript imports and code for the 3D model viewer -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 
-    <script src="./script.js"></script>
+    <!-- Your other sections: About Us, Contact Us, Footer ... -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Get all navigation links
+  const navLinks = document.querySelectorAll("nav ul li a");
+
+  // Add click event listeners to each navigation link
+  navLinks.forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent the default link behavior
+
+      // Get the target section's ID from the href attribute
+      const targetId = link.getAttribute("href").substring(1); // Remove the "#" symbol
+
+      // Find the target section by its ID
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        // Calculate the scroll position to the target section
+        const targetOffset = targetSection.getBoundingClientRect().top;
+
+        // Smoothly scroll to the target section
+        window.scrollTo({
+          top: targetOffset + window.scrollY,
+          behavior: "smooth",
+        });
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
