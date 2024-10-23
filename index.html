@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 </head>
 <body>
     <header>
@@ -52,7 +53,21 @@
             <div class="destinations-grid">
                 <div class="destination" id="moon">
                     <div class="destination-model">
-                        <canvas class="model-canvas" data-model="3dmodels/Moon.glb"></canvas>
+                        <a-scene>
+                            <a-assets>
+                              <a-asset-item id="glbModel" src="./3dmodels/Moon.glb"></a-asset-item>
+                            </a-assets>
+                        
+                            <!-- Display the 3D Model -->
+                            <a-entity gltf-model="#glbModel" position="0 1 -5" scale="1 1 1"></a-entity>
+                        
+                            <!-- Add lighting -->
+                            <a-light type="directional" position="2 4 1"></a-light>
+                            <a-light type="ambient" color="#888"></a-light>
+                        
+                            <!-- Camera -->
+                            <a-camera position="0 1.6 0"></a-camera>
+                          </a-scene>
                     </div>
                     <div class="destination-content">
                         <h3>Moon</h3>
