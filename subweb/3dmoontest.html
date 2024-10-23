@@ -26,9 +26,9 @@
         const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
         scene.add(directionalLight);
 
-        // Load the GLTF model
+        // Load the GLTF model (update this URL to the correct path)
         const loader = new THREE.GLTFLoader();
-        loader.load('..3dmodels/Moon/Moon.gltf', function (gltf) {
+        loader.load('https://nakshatra-navigators.vercel.app/3dmodels/Moon/Moon.gltf', function (gltf) {
             scene.add(gltf.scene);
             animate(); // Start the animation loop after the model is loaded
         }, undefined, function (error) {
