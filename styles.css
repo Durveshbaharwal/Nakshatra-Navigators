@@ -313,9 +313,8 @@ nav ul li a:hover {
 
 .mars-iframe {
     flex: 1; /* Takes up the available space alongside .mars-content */
-    margin-left: 20px;
     max-width: 100%; /* Make sure the iframe doesn't exceed its container */
-    height: auto; /* Let the height adjust proportionally */
+    height: 100px; /* Let the height adjust proportionally */
 }
 
 .mars-iframe iframe {
