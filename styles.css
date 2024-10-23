@@ -4,15 +4,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* Hide scrollbar but allow scrolling */
-html {
-    scrollbar-width: none; /* For Firefox */
-}
-
-body::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Edge */
-}
-
 
 body {
     font-family: Arial, sans-serif;
@@ -36,45 +27,26 @@ header {
     padding: 1rem 0;
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-}
-
-.nav-links ul {
+nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
 }
 
-.nav-links ul li {
+nav ul li {
     margin: 0 15px;
 }
 
-.nav-links ul li a {
+nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
-.nav-links ul li a:hover {
+nav ul li a:hover {
     color: #FFA500;
 }
-.hamburger {
-    display: none;
-    cursor: pointer;
-}
-
-.hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--text);
-    margin: 5px 0;
-    transition: all 0.3s ease;
-}
-
 
 /* Dropdown styles */
 .dropdown {
