@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3D model rendering
+    // 3D model rendering using Three.js
     const canvases = document.querySelectorAll('.model-canvas');
     canvases.forEach(canvas => {
         const modelFile = canvas.dataset.model;
@@ -122,4 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
         destination.style.transition = 'opacity 0.5s, transform 0.5s';
         observer.observe(destination);
     });
+
+    // Mars destination interaction
+    const marsDestinations = document.querySelectorAll('.mars-content a');
+    marsDestinations.forEach(marsLink => {
+        marsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Mars Destination clicked!');
+        });
+    });
+
 });
