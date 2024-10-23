@@ -11,6 +11,7 @@ body {
     color: #fff;
     background-color: #000;
 }
+
 .sketchfab-embed-wrapper {
     width: 80%;
     height: 80%;
@@ -57,7 +58,7 @@ nav ul li a:hover {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.9);
     min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -254,10 +255,10 @@ nav ul li a:hover {
 #contact-form button:hover {
     background-color: #FF8C00;
 }
-/* Style for Mars Destination */
+
+/* Mars Destination styles */
 .mars {
     display: flex;
-    align-items: justify;
     margin-bottom: 40px;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -270,7 +271,6 @@ nav ul li a:hover {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* Style for Mars Content */
 .mars-content {
     flex: 1;
     padding: 10px;
@@ -280,7 +280,6 @@ nav ul li a:hover {
     font-size: 1.8rem;
     margin-bottom: 10px;
     text-align: center;
-    
 }
 
 .mars-content h4 {
@@ -309,12 +308,11 @@ nav ul li a:hover {
 .mars-content a:hover {
     background-color: #0055CC;
 }
-/* Style for Mars 3D Model */
+
 .mars-iframe {
     flex: 1;
     max-width: 300px;
-    margin-left: 20px;
-    margin-right: 20px
+    margin: 0 20px;
 }
 
 .mars-iframe iframe {
