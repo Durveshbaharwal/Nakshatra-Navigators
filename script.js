@@ -131,5 +131,45 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Mars Destination clicked!');
         });
     });
+        // Hamburger menu functionality
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('nav ul');
+    const dropdowns = document.querySelectorAll('.dropdown-content');
+
+    hamburgerMenu.addEventListener('click', () => {
+        hamburgerMenu.classList.toggle('active');
+        navMenu.classList.toggle('show');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburgerMenu.classList.remove('active');
+            navMenu.classList.remove('show');
+            dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
+        });
+    });
+
+    // Toggle dropdown on mobile
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+        const dropdownBtn = dropdown.querySelector('.dropbtn');
+        const dropdownContent = dropdown.querySelector('.dropdown-content');
+
+        dropdownBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdownContent.classList.toggle('show');
+        });
+    });
+
+    // Close dropdowns when clicking outside
+    window.addEventListener('click', (e) => {
+        if (!e.target.matches('.dropbtn')) {
+            dropdowns.forEach(dropdown => {
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        }
+    });
 
 });
