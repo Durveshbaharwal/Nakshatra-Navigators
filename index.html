@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,17 +50,10 @@
         <section id="featured-destinations">
             <h2>Featured Destinations</h2>
             <div class="destinations-grid">
+                <!-- Moon Destination -->
                 <div class="destination" id="moon">
-                    <div class="sketchfab-embed-wrapper">
-                        <iframe title="Moon" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" 
-                            allow="autoplay; fullscreen; xr-spatial-tracking" 
-                            src="https://sketchfab.com/models/870de693475d436c8e925ab0bcda4ca4/embed?ui_theme=dark">
-                        </iframe>
-                        <p>
-                            <a href="https://sketchfab.com/3d-models/moon-870de693475d436c8e925ab0bcda4ca4?utm_medium=embed&utm_campaign=share-popup&utm_content=870de693475d436c8e925ab0bcda4ca4" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Moon </a> by 
-                            <a href="https://sketchfab.com/miekeroth?utm_medium=embed&utm_campaign=share-popup&utm_content=870de693475d436c8e925ab0bcda4ca4" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Mieke Roth </a> on 
-                            <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=870de693475d436c8e925ab0bcda4ca4" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
-                        </p>
+                    <div class="mars-iframe">
+                        <iframe src="./subweb/3dmoon.html" frameborder="0" scrolling="no" width="400" height="400" title="Moon 3D view"></iframe>
                     </div>
                     <div class="destination-content">
                         <h3>Moon</h3>
@@ -69,13 +62,12 @@
                         <a href="./subweb/moon.html" class="btn">View Itinerary</a>
                     </div>
                 </div>
-                <!-- Repeat similar structure for other destinations -->
+
+                <!-- Mercury Destination -->
                 <div class="destination" id="mercury">
-                    
-                        <div class="mars-iframe">
-                            <iframe src="./subweb/3dmoon.html" frameborder="0" scrolling="no" width="400" height="400"></iframe>
-                        </div>
-                    
+                    <div class="mars-iframe">
+                        <iframe src="./subweb/3dmercury.html" frameborder="0" scrolling="no" width="400" height="400" title="Mercury 3D view"></iframe>
+                    </div>
                     <div class="destination-content">
                         <h3>Mercury</h3>
                         <h4>Mercury's Challenge: Conquer the Scorching World of Extremes!</h4>
@@ -83,7 +75,8 @@
                         <a href="./subweb/mercury.html" class="btn">View Itinerary</a>
                     </div>
                 </div>
-                <!-- Add Venus, Mars, Jupiter, Saturn, Uranus, Neptune with the same structure -->
+
+                <!-- Add similar structure for Venus, Mars, Jupiter, Saturn, Uranus, Neptune -->
             </div>
         </section>
 
@@ -139,40 +132,28 @@
     <footer>
         <p>&copy; 2023 Nakshatra Navigators Space Tourism</p>
     </footer>
-    <!-- JavaScript imports and code for the 3D model viewer -->
+
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 
-    <!-- Your other sections: About Us, Contact Us, Footer ... -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  // Get all navigation links
-  const navLinks = document.querySelectorAll("nav ul li a");
-
-  // Add click event listeners to each navigation link
-  navLinks.forEach(function (link) {
-    link.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent the default link behavior
-
-      // Get the target section's ID from the href attribute
-      const targetId = link.getAttribute("href").substring(1); // Remove the "#" symbol
-
-      // Find the target section by its ID
-      const targetSection = document.getElementById(targetId);
-
-      if (targetSection) {
-        // Calculate the scroll position to the target section
-        const targetOffset = targetSection.getBoundingClientRect().top;
-
-        // Smoothly scroll to the target section
-        window.scrollTo({
-          top: targetOffset + window.scrollY,
-          behavior: "smooth",
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll("nav ul li a");
+      navLinks.forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            const targetOffset = targetSection.getBoundingClientRect().top;
+            window.scrollBy({
+              top: targetOffset + window.scrollY,
+              behavior: "smooth"
+            });
+          }
         });
-      }
+      });
     });
-  });
-});
-</script>
+    </script>
 </body>
 </html>
